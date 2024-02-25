@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floppy Borb</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="title-bar">
+            <h1>Floppy Borb</h1>
+            <div class="score">0</div>
+        </div>
+        <div class="game-window">
+			<div id="new-high-score-banner">New High Score</div> 
+			<div id="not-enough-coins-banner">Not Enough Coins</div>
+            <button class="start-button">Press to Play</button>
+            <button class="game-over-button" style="display: none;">Game Over</button>
+            <button class="restart-button action-button" style="display: none;">Restart</button> 
+            <button class="quit-button action-button" style="display: none;">Quit</button> 
+            <div class="bird"></div>
+			<div id="flash-overlay" style="display: none;"></div>
+        </div>
+		<div class="score-board">
+			<h2>High Score</h2>
+			<div id="high-score">0</div>
+		</div>
+		<div class="button-container">
+			<button id="change-theme-button">Change Theme</button>
+			<button id="toggle-sound-button">Disable Sounds</button>
+		</div>
+		<div id="coin-display">
+			<img src="assets/textures/coin.png" alt="Coin">
+			<span id="coin-count">0</span>
+		</div>
+		<audio id="pointSound" src="assets/sound/sfx_point.wav"></audio>
+		<audio id="hitSound" src="assets/sound/sfx_hit.wav"></audio>
+		<audio id="wingSound" src="assets/sound/sfx_wing.wav"></audio>  
+    </div>
+	<div id="bird-container"> 
+		<div class="coins-label">50 coins</div> 
+		<div id="bird-selection">
+			<div class="bird-box" data-bird-id="1">
+			<img src="assets/textures/bird1.png" alt="Bird 1">
+		</div>
+			<div class="bird-box" data-bird-id="2">
+			<img src="assets/textures/bird-locked.png" alt="Bird 2">
+		</div>
+			<div class="bird-box" data-bird-id="3">
+			<img src="assets/textures/bird-locked.png" alt="Bird 3">
+		</div>
+			<div class="bird-box" data-bird-id="4">
+			<img src="assets/textures/bird-locked.png" alt="Bird 4">
+		</div>
+			<div class="bird-box" data-bird-id="5">
+			<img src="assets/textures/bird-locked.png" alt="Bird 5">
+		</div>
+			<div class="bird-box" data-bird-id="6">
+			<img src="assets/textures/bird-locked.png" alt="Bird 6">
+		</div>
+			<div class="bird-box" data-bird-id="7">
+			<img src="assets/textures/bird-locked.png" alt="Bird 7">
+		</div>
+			<div class="bird-box" data-bird-id="8">
+			<img src="assets/textures/bird-locked.png" alt="Bird 8">
+		</div>
+			<div class="bird-box" data-bird-id="9">
+			<img src="assets/textures/bird-locked.png" alt="Bird 9">
+		</div>
+	</div>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>

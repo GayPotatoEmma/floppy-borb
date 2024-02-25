@@ -1,0 +1,358 @@
+body {
+    background-color: #e0e0e0; 
+    font-family: 'Press Start 2P', cursive;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+}
+
+.title-bar {
+    background-color: rgba(255, 255, 255, 0.4); 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    width: 600px; 
+    border: 2px solid black;
+	box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+}
+
+.game-window {
+    width: 600px;
+    height: 800px;
+    background-color: #72C4CF;
+    position: relative;
+	z-index: 2;
+    overflow: hidden;
+    border: 2px solid black;
+	box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+}
+
+.star {
+  position: absolute;
+  background-color: white;
+  width: 2px; 
+  height: 2px; 
+  animation: flicker 1s linear infinite; /* Apply the animation */
+  animation-duration: 1s; /* Base duration (we'll vary this slightly) */
+}
+
+@keyframes flicker {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; } 
+  100% { opacity: 1; }
+}
+
+#flash-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    z-index: 5; 
+    background-color: white; 
+    opacity: 0; 
+}
+
+.bird {
+	position: absolute;
+	width: 50px;          /* Your desired hitbox width */
+	height: 35px;         /* Your desired hitbox height */
+	background-image: url('assets/textures/bird1.png'); /* Load the sprite */
+	background-size: 100% 100%;  /* Scale the sprite to fit the hitbox */
+	background-repeat: no-repeat; /* Prevent sprite repetition */
+	left: 280px; 
+	top: 380px;
+	z-index: 1;
+}
+
+#bird-selection {
+  position: relative;
+  display: grid; /* Enable grid layout */
+  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+  grid-gap: 5px; /* Spacing between grid items */ 
+}
+
+.bird-box {
+  width: 50px;
+  height: 50px;
+  margin: 0; 
+  border: 2px solid black;
+  border-radius: 10px;
+  display: flex; /* Enable flexbox for centering */
+  align-items: center; /* Vertical centering */
+  justify-content: center; /* Horizontal centering */
+  box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.8); 
+}
+
+.bird-box img { 
+  max-width: 100%; /* Ensure the image doesn't overflow its container*/
+  max-height: 100%; /* Ensure the image doesn't overflow its container*/
+}
+
+#bird-container {
+    position: absolute;
+    top: 20px;
+    right: 50%;  
+    transform: translateX(50%) translateX(-450px);
+    padding: 15px;
+	width: 200px;
+	height: 200px;
+	display: flex;           /* Enable flexbox for centering */
+	flex-direction: column;
+    align-items: center;     /* Center vertically */
+    justify-content: center; /* Center horizontally */
+	background-color: rgba(255, 255, 255, 0.5); 
+	border: 2px solid black;
+    border-radius: 10px; 
+    box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.3);
+    font-family: 'Press Start 2P', cursive; /* The font */
+}
+
+.coins-label {
+    text-align: center;  
+    margin-bottom: 5px; /* Add spacing below the label */ 
+    font-weight: bold; 
+}
+
+.pipe {
+  width: 60px; 
+  background-image: url('assets/textures/pipe.png'); /* Load your pipe image */
+  background-repeat: repeat-y;      /* Repeat the image vertically */
+  background-size: 100% auto;        /* Scale to fit horizontally */
+  border: 3px solid black;
+  position: absolute;
+  box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.3);
+  z-index: 3;
+}
+
+.pipe-bottom {
+    bottom: 0; 
+}
+
+.pipe-top {
+	top: -5px;
+}
+
+.floor {
+  width: 100%;  
+  height: 70px;
+  background-image: url('assets/textures/floor.png'); /* Load your image */
+  background-repeat: repeat-x;        /* Repeat on the x-axis */
+  position: absolute;
+  bottom: 0px;
+  z-index: 4;
+}
+
+.coin {
+  width: 30px; /* Adjust the size as needed */
+  height: 44px;
+  background-image: url('assets/textures/coin.png');
+  background-size: cover;
+  position: absolute;
+}
+
+#coin-display {
+  position: absolute;
+  top: 170px;
+  left: 50%;  
+  transform: translateX(-50%) translateX(450px);
+  width: 200px; 
+  padding: 15px; 
+  background-color: rgba(255, 255, 255, 0.5); 
+  border: 2px solid black;
+  border-radius: 10px; 
+  box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.3);
+  font-size: 36px;
+}
+
+#coin-display img {
+  width: 30px; /* Adjust as needed */
+  height: 44px; /* Adjust as needed */
+} 
+
+.start-button {
+    background-color: green; 
+    color: white;
+    padding: 15px 30px;
+    border: 3px solid black;
+    border-radius: 5px; /* Slightly rounded corners */
+    cursor: pointer; /* Indicate it's clickable */
+	font-family: 'Press Start 2P', cursive; 
+    font-size: 16px;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the button */
+	z-index: 6;
+	box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.start-button:hover {
+    background-color: #006400; /* Darker green on hover */
+}
+
+.game-over-button {
+    background-color: red; 
+    color: white;
+    padding: 15px 30px;
+    border: 3px solid black;
+    border-radius: 5px; /* Slightly rounded corners */
+    cursor: pointer; /* Indicate it's clickable */
+	font-family: 'Press Start 2P', cursive; 
+    font-size: 16px;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the button */
+	z-index: 6;
+	box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.restart-button {
+    background-color: green; 
+    color: white; 
+    border: 3px solid black;
+    border-radius: 5px; 
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px; /* Slightly smaller font */
+    position: absolute;
+    top: 55%; /* Adjust as needed */
+    left: 50%;
+    transform: translate(-50%, -50%); 
+	z-index: 6;
+	box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.restart-button:hover {
+    background-color: #006400; 
+}
+
+.quit-button {
+    background-color: green; 
+    color: white;
+    border: 3px solid black;
+    border-radius: 5px; 
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px; /* Slightly smaller font */
+    position: absolute;
+    top: 61%; /* Adjust as needed */
+    left: 50%;
+    transform: translate(-50%, -50%); 
+	z-index: 6;
+	box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.quit-button:hover {
+    background-color: #006400; 
+}
+
+.action-button { 
+    background-color: green; 
+    color: white;
+    padding: 10px ; 
+    border: 3px solid black;
+    border-radius: 5px; 
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px; 
+    box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.3);
+	width: 130px;
+}
+
+/* Score Board */
+.score-board {
+    position: absolute;
+    top: 20px;
+    left: 50%;  
+    transform: translateX(-50%) translateX(450px); /* Adjusted centering */
+    width: 200px; 
+    background-color: rgba(255, 255, 255, 0.5); 
+    padding: 15px;
+	border: 2px solid black;
+    border-radius: 10px; 
+    box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.3);
+    font-family: 'Press Start 2P', cursive; /* The font */
+}
+
+#new-high-score-banner {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%); 
+  background-color: yellow;
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  font-family: 'Press Start 2P', cursive;
+  transition: top 0.5s ease-in-out; 
+  overflow: hidden; 
+  z-index: 4;
+  border: 2px solid black;
+}
+
+#not-enough-coins-banner {
+  position: absolute;
+  top: -60px; 
+  left: 50%;
+  transform: translateX(-50%); 
+  background-color: red; 
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  font-family: 'Press Start 2P', cursive;
+  transition: top 0.5s ease-in-out; 
+  overflow: hidden; 
+  z-index: 4;
+  border: 2px solid black;
+}
+
+.button-container {
+    text-align: center; /* To center the button  */
+    margin-top: 10px; /* Adjust spacing as needed */
+}
+
+#change-theme-button {
+    background-color: #777777;  /* Example color */
+    color: white;
+    padding: 10px 20px;
+    border: 2px solid black; 
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive; /* The font */
+	position: absolute;
+    top: 260px;
+    left: 50%;  
+    transform: translateX(-50%) translateX(450px);
+	width: 235px;
+	box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+#toggle-sound-button {
+    background-color: #777777;  /* Example color */
+    color: white;
+    padding: 10px 20px;
+    border: 2px solid black; 
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive; /* The font */
+	position: absolute;
+    top: 310px;
+    left: 50%;  
+    transform: translateX(-50%) translateX(450px); 
+	width: 235px;
+	box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.3);
+}
