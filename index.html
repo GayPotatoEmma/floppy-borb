@@ -4,6 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Floppy Borb</title>
+	
+    <script>
+    (async function(){
+        try {
+            const res = await fetch('https://ipapi.co/json/');
+            if (!res.ok) return;
+            const info = await res.json();
+            if (info && info.country_code === 'US') {
+                window.location.replace('us-landing.html');
+            }
+        } catch (e) {
+            console.warn('Geo-redirect check failed:', e);
+        }
+    })();
+    </script>
+	
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
